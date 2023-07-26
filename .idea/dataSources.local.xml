@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal" created-in="DB-232.8660.111">
+    <data-source name="byticket@localhost" uuid="77bcb8e1-a1ea-4fb4-ab4b-574f725c4359">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="POSTGRES" exact-version="0">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>forget</secret-storage>
+      <user-name>doraghter</user-name>
+      <schema-mapping />
+    </data-source>
+  </component>
+</project>
