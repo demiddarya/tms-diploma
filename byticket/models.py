@@ -9,7 +9,11 @@ class User(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.username
+        return f'{self.username}, {self.password}, {self.email}, {self.created_at}'
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
 
 class Cinema(models.Model):
