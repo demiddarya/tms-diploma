@@ -1,27 +1,43 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Bootstrap CSS-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/tickets.png' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <title>ByTicket</title>
 </head>
 <body>
 
-    {% if request.user.is_authenticated %}
-        <div class="container py-5">
-            <h2>User is logged in :)</h2>
-            <h3>Username -->  {{ request.user.username }}</h3>
-            <p>You can go to <a href="/home">Home</a> page or <a href="/logout">Logout</a>.</p>
-        </div>
-    {% else %}
-        <div class="container py-5">
-            <h3>User is not logged in :(</h3>
-            <p>Go to <a href="/login">Login</a> or <a href="/register">Register</a> page.</p>
-        </div>
-    {% endif %}
+{% if request.user.is_authenticated %}
+<div class="yellow-container flex-container">
+    <div class="flex-item">
+        <h2>User's logged in :)</h2>
+        <h4 class="rainbow rainbow-text-animated">Username --> {{ request.user.username }}</h4>
+        <p class="down-text">You can go to <a href="/movies" class="href-buttons">Home</a> page or <a href="/logout" class="href-buttons">Logout</a>.</p>
+    </div>
+    <div class="raw-item">
+        <img src="{% static 'images/tickets.png' %}" alt="ByTicket" height="128" width="128"/>
+    </div>
+</div>
+{% else %}
+<div class="yellow-container flex-container">
+    <div class="flex-item">
+        <h3>User is not logged in :(</h3>
+        <p class="down-text">Go to <a href="/login" class="href-buttons">Log in</a> or <a href="/register"
+                                                                                          class="href-buttons">Register</a>
+            page.</p>
+    </div>
+    <div class="raw-item">
+        <img src="{% static 'images/tickets.png' %}" alt="ByTicket" height="128" width="128"/>
+    </div>
+</div>
+{% endif %}
 
 </body>
 </html>

@@ -1,4 +1,3 @@
-# В файле forms.py
 from django import forms
 
 

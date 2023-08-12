@@ -1,0 +1,44 @@
+{% extends 'byticket/home.html' %}
+
+{% load static %}
+{% block body %}
+<div class="container">
+
+    <br>
+    <div class="list-group-item" style="display: flex">
+        <div style="background-color: #ffc107; width: fit-content; border-radius: 5px; padding: 8px 4px 0 4px; color: black">
+            <h3>Cinema ➾ {{ screening.cinema.name }}</h3>
+        </div>
+        <div style="width: 10px"></div>
+        <div>
+            <div style="background-color: #ffc107; width: 110px; border-radius: 5px; color: black; padding: 2px;">
+                <h6>Price ➾</h6>
+            </div>
+            <div style="height: 2px"></div>
+            <div style="background-color: #ffc107; width: 110px; border-radius: 5px; color: black; padding: 2px;">
+                <h6>Start time ➾</h6>
+            </div>
+        </div>
+        <div style="width: 10px"></div>
+        <div style="background-color: #007bff; width: fit-content; padding: 4px 4px 0 4px; border-radius: 5px; color: white">
+            <h6>{{ screening.price }} BYN</h6>
+            <h6>{{ screening.start_time }}</h6>
+        </div>
+    </div>
+    <br>
+    <div class="list-group-item" style="display: grid; grid-template-columns: repeat(20, 1fr); gap: 10px;">
+        {% for seat in seats_count %}
+        <input type="checkbox" class="btn-check" id="btn-check-2-outlined {{ seat }}">
+        <label class="btn btn-outline-dark" for="btn-check-2-outlined {{ seat }}">{{ seat }}</label>
+        {% endfor %}
+    </div>
+    <br>
+    <button type="button" class="btn btn-warning" id="reserve-seats-button">Reserve seats</button>
+    <br><br>
+
+</div>
+
+<!-- Load the JavaScript file using the static template tag -->
+<script src="{% static 'js/reserve_seats.js' %}"></script>
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'byticket/home.html' %}
+
+{% block body %}
+<div class="container">
+    <div class="colM">
+        <br>
+        {% if categories %}
+        <div style="display: flex">
+            <div class="dropdown" style="flex: 1; max-width: 200px;">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="categoriesDropdown"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                    Select Category
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="categoriesDropdown">
+                    {% for category in categories %}
+                    <li><a class="dropdown-item" href="{% url 'byticket:movies_by_category' category.id %}">{{ category.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <a class="btn btn-warning" style="flex: 2; max-width: 200px;" type="button" aria-expanded="false" href="/movies">Clear filters</a>
+        </div>
+        {% else %}
+        <h3>No categories are available.</h3>
+        {% endif %}
+        <br><br>
+
+        {% if selected_category %}
+            <h3 style="background-color: #007bff; width: fit-content; color: white; padding: 5px; border-radius: 5px;">Selected Category: {{ selected_category.name }}</h3>
+        {% endif %}
+
+        {% if movies %}
+        <div>
+            <ul class="list-group">
+                {% for movie in movies %}
+                <a href="{% url 'byticket:movie_detail' movie.id %}" style="text-decoration:none">
+                    <li class="list-group-item">
+                        <div style="display: flex;">
+                            <div style="flex: 1;">
+                                <img src="{{ movie.image_url }}" alt="{{ movie.title }}" height="400" width="300"
+                                     style="border-radius: 5px">
+                            </div>
+                            <div style="flex: 2;">
+                                <h3>{{ movie.title }}</h3>
+                                <p style="color: black">{{ movie.description }}</p>
+                            </div>
+                        </div>
+                    </li>
+                    <br>
+                </a>
+                {% endfor %}
+            </ul>
+        </div>
+        {% else %}
+        <h3>No movies are available ;(</h3>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

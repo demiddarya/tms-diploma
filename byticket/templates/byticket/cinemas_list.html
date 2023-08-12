@@ -1,0 +1,21 @@
+{% extends 'byticket/home.html' %}
+
+{% block body %}
+<div class="container">
+    <br><br>
+    {% if cinemas %}
+    <div>
+        <ul class="list-group">
+            {% for cinema in cinemas %}
+            <a href="{% url 'byticket:cinema_detail' cinema.id %}">
+                <li class="list-group-item">{{ cinema.name }} ({{ cinema.address }})</li>
+                <br>
+            </a>
+            {% endfor %}
+        </ul>
+    </div>
+    {% else %}
+    <h3>No cinemas are available ;(</h3>
+    {% endif %}
+</div>
+{% endblock %}

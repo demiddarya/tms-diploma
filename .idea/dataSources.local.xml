@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal" created-in="DB-232.8660.111">
-    <data-source name="byticket@localhost" uuid="77bcb8e1-a1ea-4fb4-ab4b-574f725c4359">
+    <data-source name="byticket@localhost" uuid="402972b1-33c9-47c5-9cd1-ede2c145742c">
       <database-info product="PostgreSQL" version="14.8 (Ubuntu 14.8-0ubuntu0.22.04.1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.6.0" dbms="POSTGRES" exact-version="14.8" exact-driver-version="42.6">
         <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>
@@ -10,8 +10,11 @@
       <user-name>doraghter</user-name>
       <schema-mapping>
         <introspection-scope>
-          <node kind="database" qname="byticket">
-            <node kind="schema" negative="1" />
+          <node negative="1">
+            <node kind="database" negative="1" />
+            <node kind="database" qname="byticket">
+              <node kind="schema" negative="1" />
+            </node>
           </node>
         </introspection-scope>
       </schema-mapping>

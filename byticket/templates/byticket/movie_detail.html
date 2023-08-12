@@ -1,0 +1,58 @@
+{% extends 'byticket/home.html' %}
+
+{% block body %}
+<div class="container">
+    <br><a class="btn btn-primary" type="button" aria-expanded="false" href="/movies">Back</a><br><br>
+
+    <li class="list-group-item">
+        <div style="display: flex;">
+            <div>
+                <img src="{{ movie.image_url }}" alt="{{ movie.title }}" height="400" width="300"
+                     style="border-radius: 5px">
+            </div>
+            <div style="width: 200px;"></div>
+            <div>
+                <h3>{{ movie.title }}</h3>
+                <p style="color: black">{{ movie.description }}</p>
+            </div>
+        </div>
+    </li>
+
+    <br>
+    <h3>All screenings of this movie.</h3>
+    {% if screenings %}
+    <div>
+        <ul class="list-group">
+            {% for screening in screenings %}
+            <a href="{% url 'byticket:screening_detail' screening.id %}" style="text-decoration:none">
+                <li class="list-group-item" style="display: flex">
+                    <div style="background-color: #ffc107; width: fit-content; border-radius: 5px; padding: 8px 4px 0 4px; color: black">
+                        <h3>Cinema ➾ {{ screening.cinema.name }}</h3>
+                    </div>
+                    <div style="width: 10px"></div>
+                    <div>
+                        <div style="background-color: #ffc107; width: 110px; border-radius: 5px; color: black; padding: 2px;">
+                            <h6>Price ➾</h6>
+                        </div>
+                        <div style="height: 2px"></div>
+                        <div style="background-color: #ffc107; width: 110px; border-radius: 5px; color: black; padding: 2px;">
+                            <h6>Start time ➾</h6>
+                        </div>
+                    </div>
+                    <div style="width: 10px"></div>
+                    <div style="background-color: #007bff; width: fit-content; padding: 4px 4px 0 4px; border-radius: 5px; color: white">
+                        <h6>{{ screening.price }} BYN</h6>
+                        <h6>{{ screening.start_time }}</h6>
+                    </div>
+                </li>
+                <br>
+            </a>
+            {% endfor %}
+        </ul>
+    </div>
+    {% else %}
+    <p>No screenings are available ;(</p>
+    {% endif %}
+</div>
+
+{% endblock %}
